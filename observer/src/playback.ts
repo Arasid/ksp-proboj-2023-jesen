@@ -114,7 +114,7 @@ export default class Playback {
         Playback.turn = turn;
         this.stats.Update(turn);
         this.setSlider(this.currentTurn);
-        leaderboard(turn.players);
+        leaderboard(turn.players, turn);
         const updated = new Set<number>();
         for (const ids of Object.keys(turn.ships)) {
             const id = parseInt(ids);

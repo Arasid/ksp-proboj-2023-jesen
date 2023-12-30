@@ -2,6 +2,11 @@ import pako from 'pako';
 
 export type ShipType = "Cln" | "Plt" | "SmallMerchantShip" | "LargeMerchantShip" | "SomalianPirateShip" | "BlackPearl" | "SniperAttackShip" | "LooterScooter";
 
+export const TRADE_SHIPS: ShipType[] = ["Cln", "Plt", "SmallMerchantShip", "LargeMerchantShip"];
+export const ATTACK_SHIPS: ShipType[] = ["SomalianPirateShip", "BlackPearl", "SniperAttackShip"];
+
+export const LOOT_SHIPS: ShipType[] = ["LooterScooter"];
+
 export interface Turn {
     players: Player[];
     ships: Record<number, Ship>;
