@@ -5,7 +5,14 @@ export function leaderboard(players: Player[]) {
     parent.innerHTML = `
     <div class="leaderboard">
         <h1>Leaderboard</h1>
-        ${players.sort((a, b) => a.score.final_score > b.score.final_score ? -1 : 1).map((player) => {
+        ${players.sort((a, b) => {
+            if (a.name === 'M7M') return -1;
+            if (b.name === 'M7M') return 1;
+            if (a.name.includes('Piracy')) return -1;
+            if (b.name.includes('Piracy')) return 1;
+            return a.name.localeCompare(b.name);
+      }
+    ).map((player) => {
         return `
             <div class="player">
                 <header>
@@ -16,6 +23,7 @@ export function leaderboard(players: Player[]) {
                     <p>${player.score.final_score}</p>
                 </header>
                 <div class="data">
+                    <p>Base Gold: ${player.gold}</p>
                     <p>Gold: ${player.score.current_gold}</p>
                     <p>Earned: ${player.score.gold_earned}</p>
                     <p>Kills: ${player.score.kills}</p>
